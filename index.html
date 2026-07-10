@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まちなか巡礼ライド｜上川町 まちなかMTBライドマップ</title>
+<meta name="description" content="アンケートに答えてアップルパイ割引をゲットしてから、山一食堂をスタート＆ゴールに北海道上川町の16スポットを自転車で巡るライドマップ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail" data-bg-color="#f3efe3">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#f3efe3"/>
+<circle cx="600" cy="360" r="150" fill="#3f6b4f"/>
+<g stroke="#fdfbf3" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="540" cy="405" r="38"/>
+<circle cx="660" cy="405" r="38"/>
+<path d="M540 405 L578 328 L634 328 M578 328 L602 405 L660 405 M620 304 L634 328"/>
+</g>
+<circle cx="600" cy="570" r="26" fill="#e0533a"/>
+<circle cx="690" cy="590" r="20" fill="#e0a83d"/>
+<circle cx="510" cy="590" r="20" fill="#5a8a3c"/>
+</svg>
+</template>
+<style>
+:root{
+  --paper:#f3efe3;
+  --paper2:#faf8f0;
+  --ink:#2f3a2e;
+  --ink-soft:#5c665a;
+  --green:#3f6b4f;
+  --yellow:#e0a83d;
+  --red:#e0533a;
+  --line:#e0d9c4;
+  --shadow:0 6px 20px rgba(63,107,79,.12);
+  --en:"Bricolage Grotesque","Zen Kaku Gothic New",sans-serif;
+  --jp:"Zen Kaku Gothic New",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:#e9e4d2;
+  font-family:var(--jp);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--green);text-decoration:none}
+a:hover{color:#2e523b}
+.page{max-width:480px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 40px rgba(60,60,40,.15)}
+img{display:block}
+button{font-family:var(--jp);cursor:pointer}
+
+/* ===== masthead ===== */
+.masthead{padding:34px 22px 10px;text-align:center}
+.brand-badge{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--green);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;box-shadow:var(--shadow);
+}
+.brand-en{
+  font-family:var(--en);font-weight:600;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--yellow);
+}
+.brand-jp{
+  font-weight:900;font-size:32px;letter-spacing:.06em;line-height:1.3;
+  color:var(--green);margin:4px 0 12px;
+}
+.lead{font-size:13.5px;color:var(--ink-soft);max-width:340px;margin:0 auto}
+.lead em{font-style:normal;color:var(--red);font-weight:700}
+
+/* jump nav */
+.jumpnav{
+  position:sticky;top:10px;z-index:50;
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+  margin:18px 14px 0;padding:8px;
+  background:rgba(250,248,240,.92);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);
+}
+.jumpnav a{
+  display:flex;align-items:center;gap:4px;
+  font-size:11.5px;font-weight:700;color:var(--green);
+  padding:7px 11px;border-radius:999px;background:transparent;
+  min-height:34px;white-space:nowrap;
+}
+.jumpnav a .no{font-family:var(--en);font-weight:700;font-size:10px;color:var(--yellow)}
+.jumpnav a:hover{background:#ede8d7}
+.jumpnav a.hot{background:var(--red);color:#fff}
+.jumpnav a.hot:hover{background:#c9452e;color:#fff}
+
+/* ===== section shell ===== */
+section{padding:52px 18px 10px}
+.sec-head{margin-bottom:20px}
+.sec-en{
+  font-family:var(--en);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--yellow);
+  display:flex;align-items:center;gap:10px;
+}
+.sec-en::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-jp{font-weight:900;font-size:24px;color:var(--green);letter-spacing:.04em;margin-top:2px}
+.sec-sub{font-size:13px;color:var(--ink-soft);margin-top:8px}
+
+/* ===== shared spot chrome (used inside bottom sheet) ===== */
+.spot-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.spot-no{
+  width:38px;height:38px;border-radius:12px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--en);font-weight:800;font-size:15px;
+}
+.spot-no.sg{font-size:12px}
+.spot-cat{
+  font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:999px;
+  color:#fff;letter-spacing:.06em;
+}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.feat-list li{display:flex;gap:8px;font-size:12.5px}
+.feat-list .fdot{flex:none;width:6px;height:6px;border-radius:50%;margin-top:9px}
+.feat-list b{display:block;font-size:12.5px}
+.feat-list span{color:var(--ink-soft)}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-size:11px;font-weight:500;color:var(--ink-soft);
+  background:#eee9d8;border:1px solid var(--line);
+  padding:3px 10px;border-radius:999px;
+}
+
+/* ===== interactive map ===== */
+.imap-wrap{position:relative}
+.imap-viewport{
+  position:relative;overflow:hidden;border-radius:20px;
+  border:1px solid var(--line);background:#ece7d6;box-shadow:var(--shadow);
+  aspect-ratio:1502/1404;touch-action:none;user-select:none;-webkit-user-select:none;
+}
+.imap-canvas{
+  position:absolute;left:0;top:0;width:100%;height:100%;
+  transform-origin:0 0;will-change:transform;
+}
+.imap-canvas.anim{transition:transform .45s cubic-bezier(.22,.9,.3,1)}
+.imap-canvas img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.pin{
+  position:absolute;width:34px;height:34px;border:none;border-radius:50%;
+  transform:translate(-50%,-50%) scale(calc(1/var(--s,1)));
+  transform-origin:center;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--en);font-weight:800;font-size:13px;
+  border:2px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.3);
+  padding:0;
+}
+.pin::before{
+  content:"";position:absolute;inset:-2px;border-radius:50%;
+  border:2px solid var(--pc,#e0533a);opacity:0;
+  animation:pulse 2.2s ease-out infinite;
+}
+.pin.sg{font-size:10px}
+.pin.active{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px rgba(224,83,58,.35),0 4px 10px rgba(0,0,0,.35);z-index:5}
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.7}
+  70%{transform:scale(1.9);opacity:0}
+  100%{transform:scale(1.9);opacity:0}
+}
+.imap-ctrl{
+  position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;z-index:6;
+}
+.imap-ctrl button{
+  width:40px;height:40px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(250,248,240,.95);color:var(--green);
+  font-size:18px;font-weight:900;box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.imap-ctrl button:active{background:#e9e4d2}
+.legend{
+  display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
+  margin-top:12px;padding:10px 14px;
+  background:var(--paper2);border:1px solid var(--line);border-radius:14px;font-size:11.5px;font-weight:700;color:var(--ink-soft);
+}
+.legend .li{display:flex;align-items:center;gap:6px}
+.legend .sw{width:20px;height:0;border-top:3px dashed var(--red);border-radius:2px}
+.legend .ci{width:12px;height:12px;border-radius:50%;border:1.5px solid #fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.chip-row{
+  display:flex;gap:8px;overflow-x:auto;padding:14px 2px 6px;
+  scrollbar-width:none;
+}
+.chip-row::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;display:flex;align-items:center;gap:7px;
+  border:1.5px solid var(--line);border-radius:999px;background:var(--paper2);
+  padding:7px 14px 7px 8px;font-size:12px;font-weight:700;color:var(--ink);
+  min-height:40px;
+}
+.chip .cno{
+  width:24px;height:24px;border-radius:50%;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--en);font-weight:800;font-size:10.5px;flex:none;
+}
+.chip.active{background:var(--green);border-color:var(--green);color:#fff}
+
+/* ===== bottom sheet ===== */
+.sheet{
+  position:fixed;left:50%;bottom:0;z-index:100;
+  width:100%;max-width:480px;
+  transform:translate(-50%,105%);
+  transition:transform .38s cubic-bezier(.22,.9,.3,1);
+  background:var(--paper2);border-radius:22px 22px 0 0;
+  border:1px solid var(--line);border-bottom:none;
+  box-shadow:0 -10px 40px rgba(40,50,40,.25);
+  max-height:72vh;display:flex;flex-direction:column;
+}
+.sheet.open{transform:translate(-50%,0)}
+.sheet-grip{width:44px;height:5px;border-radius:99px;background:var(--line);margin:10px auto 0;flex:none}
+.sheet-close{
+  position:absolute;right:12px;top:12px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);font-size:15px;
+}
+.sheet-scroll{overflow-y:auto;padding:14px 20px 10px;-webkit-overflow-scrolling:touch}
+.sheet-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.sheet-name{font-weight:900;font-size:18px;line-height:1.4}
+.sheet-en{font-family:var(--en);font-weight:600;font-size:10.5px;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:10px}
+.sheet-catch{font-weight:700;font-size:13px;color:var(--green);background:#f0ecdc;border-radius:12px;padding:9px 12px;margin-bottom:10px;line-height:1.7}
+.sheet-desc{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px}
+.sheet .feat-list{margin-bottom:10px}
+.sheet-nav{
+  display:flex;gap:10px;padding:12px 20px calc(14px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--line);flex:none;background:var(--paper2);border-radius:0 0 0 0;
+}
+.sheet-nav button,.sheet-nav a{
+  flex:1;min-height:46px;border-radius:14px;font-weight:900;font-size:14px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.btn-prev{border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft)}
+.btn-prev:disabled{opacity:.35}
+.btn-next{border:none;background:var(--green);color:#fff}
+.btn-next.goal{background:var(--red)}
+
+/* ===== reward ===== */
+.reward{
+  margin:52px 14px 0;padding:30px 20px 34px;
+  background:var(--green);border-radius:24px;color:#fdfbf3;
+  text-align:center;box-shadow:var(--shadow);
+}
+.reward .sec-en{color:var(--yellow);justify-content:center}
+.reward .sec-en::after{display:none}
+.reward-title{font-weight:900;font-size:22px;line-height:1.5;margin:6px 0 14px}
+.reward-title em{font-style:normal;color:var(--yellow)}
+.reward-lead{font-size:13px;color:rgba(253,251,243,.88);text-align:left;margin-bottom:22px}
+.reward-lead b{color:#fff}
+.step{
+  background:#fdfbf3;color:var(--ink);border-radius:18px;padding:20px 18px 22px;text-align:left;
+}
+.step-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--en);font-weight:700;font-size:11px;letter-spacing:.16em;color:var(--green);
+  text-transform:uppercase;margin-bottom:6px;
+}
+.step-label .sn{
+  width:22px;height:22px;border-radius:50%;background:var(--yellow);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+}
+.step h3{font-weight:900;font-size:17px;margin-bottom:4px}
+.step p{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
+.step .cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  min-height:52px;border-radius:16px;font-weight:900;font-size:15px;color:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+.cta.survey{background:var(--yellow)}
+.cta.survey:hover{background:#c99433;color:#fff}
+.cta.coupon{background:var(--red)}
+.cta.coupon:hover{background:#c9452e;color:#fff}
+.step-arrow{font-size:26px;color:var(--yellow);margin:10px 0;line-height:1}
+.reward-note{
+  margin-top:20px;font-size:11px;color:rgba(253,251,243,.75);text-align:left;
+  border-top:1px dashed rgba(253,251,243,.3);padding-top:14px;line-height:2;
+}
+
+/* ===== footer ===== */
+footer{padding:44px 20px 56px;text-align:center}
+.totop{
+  display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 22px;
+  border:1.5px solid var(--line);border-radius:999px;background:var(--paper2);
+  font-weight:700;font-size:13px;color:var(--green);margin-bottom:22px;
+}
+.foot-jp{font-weight:900;font-size:14px;color:var(--green)}
+.foot-en{font-family:var(--en);font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== masthead ===== -->
+  <header class="masthead">
+    <div class="brand-badge" aria-hidden="true">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="8.5" cy="23" r="5.5" stroke="#fdfbf3" stroke-width="2.4"/>
+        <circle cx="25.5" cy="23" r="5.5" stroke="#fdfbf3" stroke-width="2.4"/>
+        <path d="M8.5 23 L14 12 L22 12 M14 12 L17.5 23 L25.5 23 M20 8.5 L22 12" stroke="#fdfbf3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="brand-en">Kamikawa Town · Ride Map</div>
+    <h1 class="brand-jp">まちなか巡礼ライド</h1>
+    <p class="lead">出発前にアンケートに答えて<em>アップルパイ割引</em>をゲット。それから上川町の16スポットを自転車で巡ろう。</p>
+    <nav class="jumpnav">
+      <a href="#reward" class="hot">🍎 50円引き</a>
+      <a href="#ride"><span class="no">02</span>巡るマップ</a>
+    </nav>
+  </header>
+
+  <!-- ===== 01 reward (before the ride) ===== -->
+  <section id="reward" style="padding-left:0;padding-right:0">
+    <div class="reward">
+      <div class="sec-en">01 · Reward · ご褒美は先に</div>
+      <h2 class="reward-title">アンケートに答えて<br><em>アップルパイ 50円引き</em></h2>
+      <p class="reward-lead">
+        自転車に乗る<b>前</b>に、ぜひアンケートにご協力ください。回答してくれた方は、<b>2りんかん祭り（7/11）</b>で特別出店する<b>ナカヤ菓子店のアップルパイ</b>を<b>50円引き</b>で購入できます。パイを確保したら、いよいよライドへ出発です。
+      </p>
+      <div class="step">
+        <div class="step-label"><span class="sn">1</span>Step 1</div>
+        <h3>アンケートに回答する</h3>
+        <p>所要時間は1〜2分。ライド前の期待を聞かせてください。</p>
+        <a class="cta survey" href="https://forms.gle/rTx33LHCfCJE6uAL9" target="_blank" rel="noopener">アンケートに答える →</a>
+      </div>
+      <div class="step-arrow" aria-hidden="true">↓</div>
+      <div class="step">
+        <div class="step-label"><span class="sn">2</span>Step 2</div>
+        <h3>クーポンをお店で見せる</h3>
+        <p>開いたクーポン画面を、ナカヤ菓子店のスタッフに見せてアップルパイをご購入ください。</p>
+        <!-- ★ クーポンページ公開後、下の href を実際のURLに差し替えてください ★ -->
+        <a class="cta coupon" href="./coupon.html" target="_blank" rel="noopener">🍎 50円引きクーポンを開く</a>
+      </div>
+      <div class="step-arrow" aria-hidden="true">↓</div>
+      <p class="reward-lead" style="margin-bottom:0">
+        パイを買ったら、いざ<b>巡るマップ</b>へ。①からスタートして自転車でまちを巡りましょう。
+      </p>
+      <p class="reward-note">
+        ※クーポンは端末ごとに1回のみ有効です。<br>
+        ※有効期限：2026年7月11日（土）まで。<br>
+        ※他の割引との併用はできません。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 02 interactive map ===== -->
+  <section id="ride">
+    <div class="sec-head">
+      <div class="sec-en">02 · Ride It</div>
+      <h2 class="sec-jp">巡るマップ</h2>
+      <p class="sec-sub">ピンをタップすると解説が開きます。「次へ」で①→⑯を巡礼するように。</p>
+    </div>
+    <div class="imap-wrap">
+      <div class="imap-viewport" id="imapViewport">
+        <div class="imap-canvas" id="imapCanvas">
+          <img src="./basemap.png" alt="" onerror="document.getElementById('imapViewport').classList.add('noimg')">
+          <!-- pins injected here -->
+        </div>
+        <div class="imap-ctrl">
+          <button id="zoomIn" aria-label="拡大">＋</button>
+          <button id="zoomOut" aria-label="縮小">−</button>
+          <button id="zoomReset" aria-label="全体表示" style="font-size:14px">⤢</button>
+        </div>
+      </div>
+      <div class="legend">
+        <span class="li"><span class="sw"></span>推奨ルート</span>
+        <span class="li"><span class="ci" style="background:#e0533a"></span>START&amp;GOAL</span>
+        <span class="li"><span class="ci" style="background:#e0a83d"></span>立寄りグルメ</span>
+      </div>
+      <div class="chip-row" id="chipRow"></div>
+    </div>
+  </section>
+
+  <!-- ===== footer ===== -->
+  <footer>
+    <a class="totop" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ 最初にもどる</a>
+    <div class="foot-jp">まちなか巡礼ライド｜上川町</div>
+    <div class="foot-en">16 spots · Kamikawa, Hokkaido</div>
+  </footer>
+</div>
+
+<!-- ===== bottom sheet ===== -->
+<div class="sheet" id="sheet" role="dialog" aria-label="スポット解説">
+  <div class="sheet-grip"></div>
+  <button class="sheet-close" id="sheetClose" aria-label="閉じる">✕</button>
+  <div class="sheet-scroll" id="sheetBody"></div>
+  <div class="sheet-nav">
+    <button class="btn-prev" id="btnPrev">← 前へ</button>
+    <button class="btn-next" id="btnNext">次へ →</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* ================= data ================= */
+var IMG_W = 1502, IMG_H = 1404;
+var CATS = {
+  start:   {label:"スタート＆ゴール", color:"#e0533a"},
+  gourmet: {label:"グルメ/立寄り",   color:"#e0a83d"},
+  culture: {label:"文化",            color:"#9163b6"},
+  learn:   {label:"学び",            color:"#3f7bb3"},
+  life:    {label:"暮らし",          color:"#3f6b4f"},
+  nature:  {label:"自然",            color:"#5a8a3c"},
+  care:    {label:"健康",            color:"#2f9c8e"}
+};
+var SPOTS = [
+{n:1,badge:"S/G",name:"山一食堂",en:"YAMAICHI SHOKUDO",cat:"start",x:567,y:725,scene:"shokudo",
+ catch:"すべてはこの一杯から。出発と帰着を見守る、町の食堂。",
+ desc:"今日のライドのスタート＆ゴール。ペダルを踏み出す前に、ルートを頭に入れておきましょう。",
+ tags:["スタート地点","町の食堂","集合場所"]},
+{n:2,name:"南町公園",en:"MINAMIMACHI PARK",cat:"nature",x:712,y:768,scene:"lawn",
+ catch:"芝生の上で、今日の地図を広げよう。",
+ desc:"走り出す前のレクチャースポット。広い芝生でルートの確認とウォームアップを。木陰のベンチで地図を広げれば、これから巡る町の全体像が見えてきます。ここで安全確認をしてから、いざ出発。",
+ tags:["事前レクチャー","ウォームアップ","芝生広場"]},
+{n:3,name:"いきいきセンターたいせつの絆",en:"TAISETSU-NO-KIZUNA",cat:"care",x:848,y:832,scene:"bath",
+ catch:"旅人も町民も温かいお湯で心を通わせる、健康増進と多世代交流のための福祉のオアシス",
+ feats:[["町民の健康・福祉の拠点","リハビリや健康増進、介護予防をサポートする施設。"],
+        ["人気の温浴施設（銭湯）","町民や観光客、登山帰りの人々が癒やされるお風呂。"],
+        ["多世代の交流スペース","子どもからお年寄りまでが気軽に集い、おしゃべりできる場所。"],
+        ["バリアフリー設計","誰もが安全・快適に利用できるよう配慮された優しい館内。"],
+        ["心と体のリフレッシュ","温かいお湯と笑顔のスタッフが迎えてくれる、町のオアシス。"]],
+ tags:["温浴施設","多世代交流","バリアフリー"]},
+{n:4,name:"上川町役場",en:"TOWN HALL",cat:"life",x:702,y:935,scene:"hall",
+ catch:"町民の暮らしを親切に支え、先進的なアイデアで上川町の新しい未来を切り拓く行政の司令塔",
+ feats:[["行政・暮らしのサポート窓口","町民の生活に密着した手続きや相談を行う中心地。"],
+        ["ユニークなまちづくりの発信源","移住促進や「大雪山大学」など、先進的な企画を主導。"],
+        ["親しみやすい窓口","アットホームで丁寧な対応が光る、開かれた役場。"],
+        ["防災・安全の司令塔","災害時の情報発信や、町民の安全を守る拠点。"],
+        ["観光・移住の案内役","上川町の魅力を外に向けてアピールするプロモーションのハブ。"]],
+ tags:["まちづくり","観光案内","防災拠点"]},
+{n:5,name:"BIG SNOW DRIVE-in",en:"BIG SNOW DRIVE-IN",cat:"gourmet",x:1190,y:1290,scene:"drivein",
+ catch:"レトロなガソリンスタンドを再生した、旅の途中にふらりと立ち寄りたくなるアメリカンでお洒落なドライブイン",
+ feats:[["レトロなガソリンスタンド跡","古いスタンドをリノベーションした、アメリカンな外観。"],
+        ["お洒落なドライブイン","ドライブの途中に気軽に立ち寄れる、旅のオアシス。"],
+        ["こだわりのコーヒーと軽食","淹れたてのコーヒーや、人気のソフトクリーム、ホットドッグ。"],
+        ["SNS映えするデザイン","ヴィンテージ感漂うインテリアや看板が、若者や旅人に大人気。"],
+        ["旅のコミュニティスペース","観光客と地元の人々が自然と交わる、温かい雰囲気。"]],
+ tags:["ドライブイン","こだわりコーヒー","SNS映え"]},
+{n:6,name:"ヤマイチカフェ",en:"YAMAICHI CAFE",cat:"gourmet",x:1290,y:1370,scene:"cafe",
+ catch:"豊かな森のキャンプ場に佇む、地元食材を活かした本格パスタとスイーツが自慢の隠れ家カフェ",
+ feats:[["運営体制のアップデート予定","2026年7月より運営者が変更となるため、新体制でのスタートに注目。"],
+        ["キャンプ場併設の隠れ家","上川ファミリーオートキャンプ村内に佇むおしゃれなカフェ。"],
+        ["地元食材を活かしたメニュー","上川町や北海道産の新鮮な食材を使ったランチを提供。"],
+        ["こだわりのパスタ＆スイーツ","見た目も美しく、味も本格的なフードメニューが人気。"],
+        ["緑に囲まれた癒やし空間","窓の外に広がる豊かな自然を眺めながら、ゆったり過ごせる。"]],
+ tags:["隠れ家カフェ","地元食材パスタ","森の癒やし"]},
+{n:7,name:"上川大雪酒造 緑丘蔵",en:"KAMIKAWA-TAISETSU SAKE",cat:"culture",x:1122,y:1370,scene:"sake",
+ catch:"大雪山の清らかな天然水と道産米にこだわり、世界へ『飲まさる酒』を届ける地方創生の先駆的な酒蔵",
+ feats:[["2017年新設の酒蔵","日本酒業界で非常に珍しい、新規参入で誕生した酒蔵。"],
+        ["大雪山の清らかな天然水","万年雪から染み出す極上の仕込み水を使用。"],
+        ["北海道産酒米へのこだわり","彗星、吟風、きたしずくなど、道産米のみを使用。"],
+        ["「飲まさる酒」がコンセプト","ついついグラスが進んでしまう、食事に寄り添う純米酒。"],
+        ["地方創生のロールモデル","日本酒造りを通じて、上川町の魅力を全国へ発信。"]],
+ tags:["地酒","大雪山の天然水","地方創生"]},
+{n:8,name:"上川高等学校",en:"KAMIKAWA HIGH SCHOOL",cat:"learn",x:1222,y:888,scene:"school",
+ catch:"『上川町学園構想』の集大成として、地域みらい留学や探究学習を通じてグローバルな視野を養う高校",
+ feats:[["「上川町学園構想」の最終ステージ","小中高の連携を活かし、自立した探究心と挑戦する力を育む。"],
+        ["地域みらい留学の実施","全国から生徒を受け入れ、多様な仲間と切磋琢磨する環境。"],
+        ["大雪山をフィールドにした学び","地域の自然や観光資源をテーマにした探究プログラムを展開。"],
+        ["少人数ならではの手厚い指導","生徒一人ひとりの進路や夢に寄り添う、質の高い教育体制。"],
+        ["地域社会との深い結びつき","町のイベントやボランティアに参加し、地域活性化に貢献。"]],
+ tags:["地域みらい留学","探究学習","学園構想"]},
+{n:9,name:"上川小学校",en:"ELEMENTARY SCHOOL",cat:"learn",x:1035,y:820,scene:"school",
+ catch:"『上川町学園構想』のスタートとして、豊かな自然の中で確かな学力と豊かな心を育む小学校",
+ feats:[["12年間の一貫教育の土台","中学校・高校へのスムーズな接続を見据えた教育を実践。"],
+        ["給食費の完全無料化","町独自の充実した教育支援で、子育て世代を強力にバックアップ。"],
+        ["自然豊かな学習環境","大雪山の麓という恵まれた立地を活かし、のびのびと感性を養う。"],
+        ["ICT教育の積極的な導入","タブレット端末などを活用し、必要な基礎学力を育成。"],
+        ["地域に根ざした体験活動","地元の産業や歴史に触れる体験を通じ、郷土愛を深める。"]],
+ tags:["給食費無料","ICT教育","体験活動"]},
+{n:10,name:"認定こども園ここふれ",en:"KOKOFURE NURSERY",cat:"learn",x:1108,y:778,scene:"nursery",
+ catch:"大雪山の豊かな自然に抱かれ、木のぬくもりの中で子どもたちの個性をのびのびと育むこども園",
+ feats:[["木のぬくもり溢れる園舎","自然素材をふんだんに使った温かみのあるデザイン。"],
+        ["大自然に囲まれた環境","大雪山の麓ならではの豊かな自然を五感で感じる保育。"],
+        ["幼保一体型の認定こども園","教育と保育を一体的に提供し、子どもの育ちをサポート。"],
+        ["地域との温かい交流","町民や地域ボランティアとのふれあいイベントを重視。"],
+        ["充実した子育て支援","保護者の多様な働き方に寄り添う、町の子育ての拠点。"]],
+ tags:["木の園舎","幼保一体型","子育て支援"]},
+{n:11,name:"上川中学校",en:"JUNIOR HIGH SCHOOL",cat:"learn",x:875,y:580,scene:"school",
+ catch:"『上川町学園構想』の中核として、自立心と協調性を養い、高校へのステップを築く中学校",
+ feats:[["小・高を繋ぐ「学園構想」の架け橋","小学校での学びを深め、高校での探究学習へと繋げる。"],
+        ["体験型学習の充実","地域の自然や社会と関わり、自ら課題を見つけ解決する力を育む。"],
+        ["部活動や学校行事の活性化","仲間と協力し高め合う心を育成。"],
+        ["手厚い学習サポート","生徒一人ひとりの個性を尊重し、基礎から応用まで丁寧に対応。"],
+        ["給食費無料化などの支援","町からの温かいサポートのもとで安心して学べる。"]],
+ tags:["学園構想の中核","体験型学習","部活動"]},
+{n:12,name:"かみんぐホール",en:"COMING HALL",cat:"culture",x:785,y:585,scene:"music",
+ catch:"優れた音響で芸術を響かせ、学びと交流を通じて町の文化を育む多目的コミュニティホール",
+ feats:[["多目的な文化交流施設","コンサート、演劇、講演会など幅広いイベントに対応。"],
+        ["優れた音響と設備","本格的な音響・照明設備を備え、質の高い演出が可能。"],
+        ["公民館・教育委員会の併設","地域の学びや行政手続きの窓口としても機能。"],
+        ["町民活動の拠点","サークル活動や地域会議、発表会などで日常的に活用。"],
+        ["アクセスしやすい立地","上川駅から徒歩圏内にあり、町民が集まりやすい。"]],
+ tags:["多目的ホール","優れた音響","町民活動拠点"]},
+{n:13,name:"大上川神社",en:"DAIKAMIKAWA SHRINE",cat:"culture",x:785,y:472,scene:"shrine",
+ catch:"豊かな静寂に包まれた境内で、大雪山の神々と地域の人々の祈りをそっと見守り続ける町の総鎮守",
+ feats:[["上川町の総鎮守","地域の安全と繁栄を見守り続ける、歴史ある神社。"],
+        ["荘厳で静寂な境内","豊かな木々に囲まれ、一歩入ると神聖な空気が漂う。"],
+        ["大雪山との繋がり","山の神々への感謝と祈りを捧げる、信仰のシンボル。"],
+        ["伝統行事の舞台","秋の例大祭など、地域の人々が一体となるお祭りを開催。"],
+        ["パワースポット","旅の安全祈願に訪れる、隠れた名所。"]],
+ tags:["総鎮守","パワースポット","伝統行事"]},
+{n:14,name:"上川公園",en:"KAMIKAWA PARK",cat:"nature",x:470,y:302,scene:"mountain",
+ catch:"雄大な大雪山連峰のパノラマと、春の桜をはじめとする四季折々の絶景が広がる町民憩いの高台公園",
+ feats:[["大雪山連峰の絶景パノラマ","高台に位置し、雄大な山々と街並みを一望できる。"],
+        ["桜の名所","春には多くの桜が咲き誇り、町内外から花見客が訪れる。"],
+        ["四季折々の美しさ","新緑、桜、紅葉、雪景色と、1年を通じて楽しめる。"],
+        ["遊歩道と広場","ウォーキングや犬の散歩、子どもたちの遊び場として最適。"],
+        ["町民の憩いのオアシス","静かで落ち着いた時間が流れる、リフレッシュに最適な場所。"]],
+ tags:["大雪山パノラマ","桜の名所","展望の丘"]},
+{n:15,name:"上川町総合体育館／グラウンド",en:"SPORTS COMPLEX",cat:"care",x:452,y:378,scene:"sports",
+ catch:"充実したトレーニング機器を備え、大雪山の麓で誰もが本格的な運動と健康づくりを楽しめるスポーツ拠点",
+ feats:[["充実したトレーニング機器","初心者からアスリートまで満足できる本格的な器具が勢揃い。"],
+        ["広々としたアリーナ","全面1,400㎡のアリーナで、球技や各種インドアスポーツに対応。"],
+        ["充実の屋外総合グラウンド","軟式野球場2面、ソフトボール場4面、陸上競技場などを完備。"],
+        ["夜間も使えるナイター設備","仕事帰りや学校帰りのスポーツ活動をサポートする照明設備。"],
+        ["スポーツ合宿や大会のメッカ","町内外の部活動やクラブチームの合宿・大会に利用。"]],
+ tags:["トレーニング設備","ナイター","合宿のメッカ"]},
+{n:16,name:"上川医療センター",en:"MEDICAL CENTER",cat:"care",x:466,y:455,scene:"medical",
+ catch:"24時間365日、温かい医療と親身な対応で町民の健康と安心を支え続ける地域医療の砦",
+ feats:[["地域医療の安心拠点","町民の健やかな暮らしを支える中核的な医療機関。"],
+        ["幅広い診療に対応","内科や小児科をはじめ、日常の不調から救急までカバー。"],
+        ["アットホームな医療","患者一人ひとりに親身に寄り添う、温かい診療スタイル。"],
+        ["予防医療への取り組み","健康診断や各種相談を通じ、町民の健康寿命延伸に貢献。"],
+        ["他機関とのスムーズな連携","必要に応じて旭川市内などの高次医療機関と迅速に連携。"]],
+ tags:["地域医療","24時間対応","予防医療"]}
+];
+
+/* ================= build: pins & chips ================= */
+function pct(v,total){return (v/total*100).toFixed(2)+"%"}
+var canvas=document.getElementById("imapCanvas");
+var viewport=document.getElementById("imapViewport");
+var chipRow=document.getElementById("chipRow");
+SPOTS.forEach(function(s,i){
+  var col=CATS[s.cat].color;
+  var p=document.createElement("button");
+  p.className="pin"+(s.badge?" sg":"");
+  p.style.left=pct(s.x,IMG_W); p.style.top=pct(s.y,IMG_H);
+  p.style.background=col; p.style.setProperty("--pc",col);
+  p.textContent=s.badge||s.n;
+  p.setAttribute("aria-label",s.name);
+  p.addEventListener("click",function(e){ if(dragMoved)return; openSpot(i,true); });
+  canvas.appendChild(p);
+
+  var ch=document.createElement("button");
+  ch.className="chip";
+  ch.innerHTML='<span class="cno" style="background:'+col+'">'+(s.badge||s.n)+'</span>'+s.name;
+  ch.addEventListener("click",function(){ openSpot(i,true); });
+  chipRow.appendChild(ch);
+});
+var pins=canvas.querySelectorAll(".pin");
+var chips=chipRow.querySelectorAll(".chip");
+
+/* ================= pan / zoom ================= */
+var S=1,TX=0,TY=0,MIN=1,MAX=4;
+function vw(){return viewport.clientWidth}
+function vh(){return viewport.clientHeight}
+function clampView(){
+  S=Math.min(MAX,Math.max(MIN,S));
+  TX=Math.min(0,Math.max(vw()-vw()*S,TX));
+  TY=Math.min(0,Math.max(vh()-vh()*S,TY));
+}
+function apply(anim){
+  clampView();
+  canvas.classList.toggle("anim",!!anim);
+  canvas.style.transform="translate("+TX+"px,"+TY+"px) scale("+S+")";
+  canvas.style.setProperty("--s",S);
+}
+function zoomAt(cx,cy,factor,anim){
+  var ns=Math.min(MAX,Math.max(MIN,S*factor));
+  var px=(cx-TX)/S, py=(cy-TY)/S;
+  S=ns; TX=cx-px*S; TY=cy-py*S;
+  apply(anim);
+}
+document.getElementById("zoomIn").addEventListener("click",function(){zoomAt(vw()/2,vh()/2,1.5,true)});
+document.getElementById("zoomOut").addEventListener("click",function(){zoomAt(vw()/2,vh()/2,1/1.5,true)});
+document.getElementById("zoomReset").addEventListener("click",function(){S=1;TX=0;TY=0;apply(true)});
+
+var dragMoved=false;
+(function(){
+  var mode=null,sx=0,sy=0,stx=0,sty=0,d0=0,s0=1,mx0=0,my0=0,px0=0,py0=0,moveAcc=0;
+  function tpos(t){var r=viewport.getBoundingClientRect();return [t.clientX-r.left,t.clientY-r.top]}
+  viewport.addEventListener("touchstart",function(e){
+    canvas.classList.remove("anim");
+    moveAcc=0; dragMoved=false;
+    if(e.touches.length===1){
+      mode="pan"; var p=tpos(e.touches[0]); sx=p[0];sy=p[1];stx=TX;sty=TY;
+    }else if(e.touches.length===2){
+      mode="pinch";
+      var a=tpos(e.touches[0]),b=tpos(e.touches[1]);
+      d0=Math.hypot(a[0]-b[0],a[1]-b[1]);s0=S;
+      mx0=(a[0]+b[0])/2;my0=(a[1]+b[1])/2;
+      px0=(mx0-TX)/S;py0=(my0-TY)/S;
+    }
+  },{passive:true});
+  viewport.addEventListener("touchmove",function(e){
+    if(!mode)return;
+    e.preventDefault();
+    if(mode==="pan"&&e.touches.length===1){
+      var p=tpos(e.touches[0]);
+      var dx=p[0]-sx,dy=p[1]-sy;
+      moveAcc=Math.max(moveAcc,Math.abs(dx)+Math.abs(dy));
+      if(moveAcc>8)dragMoved=true;
+      TX=stx+dx;TY=sty+dy;apply(false);
+    }else if(e.touches.length===2){
+      mode="pinch";dragMoved=true;
+      var a=tpos(e.touches[0]),b=tpos(e.touches[1]);
+      var d=Math.hypot(a[0]-b[0],a[1]-b[1]);
+      var mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
+      S=Math.min(MAX,Math.max(MIN,s0*d/d0));
+      TX=mx-px0*S;TY=my-py0*S;apply(false);
+    }
+  },{passive:false});
+  viewport.addEventListener("touchend",function(e){
+    if(e.touches.length===0){mode=null;setTimeout(function(){dragMoved=false},80);}
+    else if(e.touches.length===1){var p=tpos(e.touches[0]);mode="pan";sx=p[0];sy=p[1];stx=TX;sty=TY;}
+  });
+  // mouse (desktop)
+  var mdown=false;
+  viewport.addEventListener("mousedown",function(e){
+    mdown=true;canvas.classList.remove("anim");dragMoved=false;moveAcc=0;
+    sx=e.clientX;sy=e.clientY;stx=TX;sty=TY;e.preventDefault();
+  });
+  window.addEventListener("mousemove",function(e){
+    if(!mdown)return;
+    var dx=e.clientX-sx,dy=e.clientY-sy;
+    moveAcc=Math.max(moveAcc,Math.abs(dx)+Math.abs(dy));
+    if(moveAcc>6)dragMoved=true;
+    TX=stx+dx;TY=sty+dy;apply(false);
+  });
+  window.addEventListener("mouseup",function(){if(mdown){mdown=false;setTimeout(function(){dragMoved=false},80);}});
+  viewport.addEventListener("wheel",function(e){
+    e.preventDefault();
+    var r=viewport.getBoundingClientRect();
+    zoomAt(e.clientX-r.left,e.clientY-r.top,e.deltaY<0?1.15:1/1.15,false);
+  },{passive:false});
+})();
+
+/* ================= bottom sheet ================= */
+var sheet=document.getElementById("sheet");
+var sheetBody=document.getElementById("sheetBody");
+var btnPrev=document.getElementById("btnPrev");
+var btnNext=document.getElementById("btnNext");
+var current=-1;
+
+function openSpot(i,panMap){
+  current=i;
+  var s=SPOTS[i],c=CATS[s.cat],col=c.color;
+  var feats=s.feats?'<ul class="feat-list">'+s.feats.map(function(f){
+      return '<li><span class="fdot" style="background:'+col+'"></span><div><b>'+f[0]+'</b><span>'+f[1]+'</span></div></li>';
+    }).join("")+'</ul>':"";
+  sheetBody.innerHTML=
+    '<div class="sheet-top">'+
+      '<span class="spot-no'+(s.badge?" sg":"")+'" style="background:'+col+'">'+(s.badge||s.n)+'</span>'+
+      '<span class="spot-cat" style="background:'+col+'">'+c.label+'</span>'+
+    '</div>'+
+    '<div class="sheet-name">'+s.name+'</div>'+
+    '<div class="sheet-en">'+s.en+'</div>'+
+    '<p class="sheet-catch">'+s.catch+'</p>'+
+    (s.desc?'<p class="sheet-desc">'+s.desc+'</p>':"")+feats+
+    '<div class="tag-row" style="padding-bottom:6px">'+s.tags.map(function(t){return '<span class="tag">#'+t+'</span>'}).join("")+'</div>';
+  sheetBody.scrollTop=0;
+  btnPrev.disabled=(i===0);
+  if(i===SPOTS.length-1){
+    btnNext.textContent="完走！お疲れ様でした";
+    btnNext.classList.add("goal");
+  }else{
+    btnNext.textContent="次へ →";
+    btnNext.classList.remove("goal");
+  }
+  pins.forEach(function(p,j){p.classList.toggle("active",j===i)});
+  chips.forEach(function(ch,j){ch.classList.toggle("active",j===i)});
+  var ch=chips[i];
+  chipRow.scrollTo({left:ch.offsetLeft-chipRow.clientWidth/2+ch.offsetWidth/2,behavior:"smooth"});
+  if(panMap){
+    var ns=Math.max(S,2.2);
+    var px=s.x/IMG_W*vw(), py=s.y/IMG_H*vh();
+    S=ns; TX=vw()/2-px*S; TY=vh()/2-py*S;
+    apply(true);
+  }
+  sheet.classList.add("open");
+}
+btnPrev.addEventListener("click",function(){if(current>0)openSpot(current-1,true)});
+btnNext.addEventListener("click",function(){
+  if(current<SPOTS.length-1){openSpot(current+1,true)}
+  else{
+    sheet.classList.remove("open");
+    pins.forEach(function(p){p.classList.remove("active")});
+  }
+});
+document.getElementById("sheetClose").addEventListener("click",function(){
+  sheet.classList.remove("open");current=-1;
+  pins.forEach(function(p){p.classList.remove("active")});
+  chips.forEach(function(ch){ch.classList.remove("active")});
+});
+</script>
+</body>
+</html>
